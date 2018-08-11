@@ -243,7 +243,28 @@ label {
   text-transform: uppercase;
 }
 
+/* ============== Restaurant Listing Media Query ================= */
+
+@media only screen and (min-width: 0px) {
+  #restaurants-list li {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  #restaurants-list li {
+    max-width: 45%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #restaurants-list li {
+    max-width: 300px;
+  }
+}
+
 /* ====================== Restaurant Details ====================== */
+
 .inside header {
   position: fixed;
   top: 0;
@@ -339,24 +360,103 @@ label {
 
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
-  width: 85%;
-  border-radius: 20px 0px;
+  width: 78%;
+  border-radius: 10px 0px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-#reviews-list li p {
-  margin: 0 0 10px;
+#reviews-list li>p:nth-child(1) {
+  width: 50%;
+  align-self: center;
+  color: #151515;
+  font-weight: 700;
+}
+
+#reviews-list li>p:nth-child(2) {
+  align-self: center;
+  width: 50%;
+  text-align: right;
+  color: #ccc
+}
+
+#reviews-list li>p:nth-child(3) {
+  width: 100%;
+  color: #f58500;
 }
 
 #restaurant-hours td {
   color: #666;
+}
+
+/* ============= Restaurant Details Media Query ============= */
+
+@media only screen and (max-width: 800px) {
+  body {
+    margin: 0;
+  }
+  .inside {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .inside header {
+    order: 0;
+    width: 100%;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+  header nav {
+    order: 0;
+  }
+  header #breadcrumb {
+    order: 1;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+  }
+  .inside #map-container {
+    order: 2;
+    top: 130px;
+    position: relative;
+    height: 300px;
+    width: 100%;
+  }
+  .inside #restaurant-container {
+    order: 3;
+    position: relative;
+    width: 100%;
+    padding: 140px 5px 10px 15px;
+    margin: auto;
+    text-align: center;
+  }
+  .inside #reviews-container {
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+  }
+  .inside #footer {
+    order: 4;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
+  }
+  #reviews-list {
+    width: 100%;
+  }
+  #reviews-container h2 {
+    text-align: center;
+  }
 }
