@@ -193,3 +193,22 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+/* Register service worker */
+
+if ('servicWorker' in navigation) {
+  navigator.serviceWorker.register('./js/sw/sw.js') // Still need to create dir & file
+    .then((reg) => {
+      if (reg.installing) {
+        console.log('Service worker installing');
+      } else if (reg.waiting) {
+        console.log('Service worker installed');
+      } else if (reg.active) {
+        console.log('Service worker active');
+      }
+
+      console.log('Registration completed. Scope is ' + reg.scope);
+    }).catch((err) => {
+      console.log('Registration failed with ' + err);
+    });
+}
