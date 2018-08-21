@@ -243,7 +243,7 @@ label {
   text-transform: uppercase;
 }
 
-/* ============== Restaurant Listing Media Query ================= */
+/* ============== Restaurant Listing Media Query  ================= */
 
 @media only screen and (min-width: 0px) {
   #restaurants-list li {
@@ -261,7 +261,9 @@ label {
   #restaurants-list li {
     max-width: 300px;
   }
-}
+}    
+  
+
 
 /* ====================== Restaurant Details ====================== */
 
@@ -290,7 +292,7 @@ label {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 45%;
 }
 
 #restaurant-name {
@@ -303,16 +305,20 @@ label {
   text-transform: uppercase;
   line-height: 1.1;
   border-radius: 5px;
-  height: 20px;
+  height: 30px;
 }
 
 #restaurant-img {
-	width: 90%;
+	width: 100%;
 }
 
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 0px;
+}
+
+.restaurant-info-label {
+  display: none;
 }
 
 #restaurant-cuisine {
@@ -325,7 +331,7 @@ label {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 90%;
+	width: 100%;
 }
 
 #restaurant-container, 
@@ -342,11 +348,11 @@ label {
 }
 
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 30px 20px 80px;
 }
 
 #reviews-container h2 {
-  color: #f58500;
+  color: ##a85900;
   font-size: 24pt;
   font-weight: 300;
   letter-spacing: -1px;
@@ -359,26 +365,24 @@ label {
 }
 
 #reviews-list li {
-  background-color: #fff;
+  background-color: ##fff;
   border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
-  margin: 0 0 30px;
+  margin: 0 0 40px;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 20px 40px 40px;
   position: relative;
-  width: 78%;
-  border-radius: 10px 0px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+}
+
+#reviews-list li p {
+  margin: 0 0 10px;
 }
 
 #reviews-list li>p:nth-child(1) {
   width: 50%;
   align-self: center;
-  color: #151515;
-  font-weight: 700;
+  color: #DF7401;
 }
 
 #reviews-list li>p:nth-child(2) {
@@ -399,7 +403,7 @@ label {
 
 /* ============= Restaurant Details Media Query ============= */
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 650px) {
   body {
     margin: 0;
   }
@@ -437,7 +441,7 @@ label {
     order: 3;
     position: relative;
     width: 100%;
-    padding: 140px 5px 10px 15px;
+    padding: 140px 5px 0 0;
     margin: auto;
     text-align: center;
   }
