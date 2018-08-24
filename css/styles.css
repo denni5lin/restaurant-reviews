@@ -272,7 +272,7 @@ label {
 }    
   
 /* ====================== Restaurant Details ====================== */
-/*
+  /*
 .inside header {
   position: fixed;
   top: 0;
@@ -280,12 +280,13 @@ label {
   z-index: 1000;
 }
 */
+
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   height: 87%;
   position: fixed;
   right: 0;
-  top: 80px;
+  top: 95px;
   width: 50%;
 }
 
@@ -294,13 +295,13 @@ label {
   height: 100%;
   width: 100%;
 }
-/*
+
 .inside #footer {
   bottom: 0;
   position: absolute;
   width: 45%;
 }
-*/
+
 #restaurant-name {
   color: #b25e00;
   font-family: Arial,sans-serif;
