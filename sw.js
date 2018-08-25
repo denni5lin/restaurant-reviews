@@ -29,13 +29,29 @@ self.addEventListener('install', function(e) {
 			console.log("[ServiceWorker] Caching cacheFiles");
 			return cache.addAll(cacheFiles);
 		})
-	)
-})
+	);
+});
 
 self.addEventListener('activate', function(e) {
 	console.log('[ServiceWorker] Activated');
-})
+
+	e.waitUntil(
+		caches.keys().then(function(cacheNames) {
+			return Promise.all(cacheNames.map(function(thisCacheName) {
+				if (thisCacheName !== cacheName) {
+					console.log('[ServiceWorker] Removing cached files from ', thisCacheName);
+				};
+			}));
+		})
+	);
+});
 
 self.addEventListener('fetch', function(e) {
 	console.log('[ServiceWorker] Fetching', e.request.url);
-})
+
+	e.respondWith(
+			caches.match(e.request).then(function(response) {
+				return response || fetch(e.request);
+			})
+		);
+});
