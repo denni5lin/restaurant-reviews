@@ -1,4 +1,4 @@
-var cacheName = 'v1';
+var staticCacheName = 'v1';
 var cacheFiles = [
 	'/',
 	'/index.html',
@@ -22,36 +22,51 @@ var cacheFiles = [
 ];
 
 self.addEventListener('install', function(e) {
-	console.log('[ServiceWorker] Installed');
+	// console.log('[ServiceWorker] Installed');
 
 	e.waitUntil(
-		caches.open(cacheName).then(function(cache) {
+		caches.open(staticCacheName).then(function(cache) {
 			console.log("[ServiceWorker] Caching cacheFiles");
 			return cache.addAll(cacheFiles);
+		})
+		.catch(error => {
+			console.log(error);
 		})
 	);
 });
 
 self.addEventListener('activate', function(e) {
-	console.log('[ServiceWorker] Activated');
-
+	// console.log('[ServiceWorker] Activated');
+  	
 	e.waitUntil(
 		caches.keys().then(function(cacheNames) {
 			return Promise.all(cacheNames.map(function(thisCacheName) {
-				if (thisCacheName !== cacheName) {
+				if (thisCacheName !== staticCacheName) {
 					console.log('[ServiceWorker] Removing cached files from ', thisCacheName);
+					return caches.delete(thisCacheName);
 				};
 			}));
 		})
 	);
+
 });
 
 self.addEventListener('fetch', function(e) {
-	console.log('[ServiceWorker] Fetching', e.request.url);
+	// console.log('[ServiceWorker] Fetching', e.request.url);
 
 	e.respondWith(
-			caches.match(e.request).then(function(response) {
-				return response || fetch(e.request);
-			})
-		);
+		caches.match(e.request).then(function(response) {
+			if (response !== undefined) {
+				return response;
+			} else {
+				return fetch(e.request).then(function(response) {
+					let responseClone = response.clone();
+					caches.open(staticCacheName).then(function(cache) {
+						cache.put(e.request, responseClone);
+					});
+					return response;
+				});
+			};
+		})
+	);
 });
