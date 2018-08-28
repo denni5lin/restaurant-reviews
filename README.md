@@ -15,7 +15,7 @@ You have been provided the code for a restaurant reviews website. The code has a
 * Or [Download](https://github.com/denni5lin/restaurant-reviews/archive/master.zip) this repository.
 * Upzip the file and `cd` into new directory folder
 * From directory folder, launch a local client server from terminal by typing `python -m http.server 8000` into your command line.
-* Open your favorite browser and goo to http://localhost:8000
+* With your server running, open your favorite browser and visit the site `http://localhost:8000`.
 
 
 ### Project to do list
