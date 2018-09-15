@@ -1,6 +1,3 @@
-/**
- * Common database helper functions.
- */
 class DBHelper {
 
   /**
@@ -8,8 +5,12 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `https://localhost:${port}/data/restaurants.json`;
+    const port = 8000 
+    // return `http://localhost:${port}/data/restaurants.json`; <= enable when running locally
+    /*
+    * Run on my GitHub pages 
+    */
+    return `https://denni5lin.github.io/restaurant-reviews/data/restaurants.json`; 
   }
 
   /**
